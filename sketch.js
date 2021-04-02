@@ -60,17 +60,17 @@ function draw(){
       driving.loop()
       camera.position.y=car.position.y;
       gameState=PLAY;
-      car.velocityY=-5
+      car.velocityY=-7
       
     }
     if(keyDown(LEFT_ARROW)){
-      car.velocityX=-5;
+      car.velocityX=-8;
       camera.position.y=car.position.y;
     camera.position.x=1300/2;
     }
   
     if(keyDown(RIGHT_ARROW)){
-      car.velocityX=5;
+      car.velocityX=8;
       camera.position.y=car.position.y;
     camera.position.x=1300/2;
     }
@@ -83,7 +83,7 @@ car.depth=car.depth+10;
   
  
 
-  
+  console.log(car.y)
 
 
   drawSprites();
@@ -98,6 +98,17 @@ car.depth=car.depth+10;
     sound.play();
     driving.stop();
 
+  }
+
+  if(car.y<-6000){
+    stroke("white");
+    textSize(50);
+    fill("yellow")
+    text("You Won!!!!!, Press Ctrl+R to Play Again",250,camera.y);
+    car.velocityY=0;
+    car.velocityX=0;
+    //sound.play();
+    driving.stop();
   }
 
 
